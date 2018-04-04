@@ -11,7 +11,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Número</th>
           <th>Produtos</th>
           <th>Situação</th>
           <th>Data</th>
@@ -22,7 +22,7 @@
         {% for order in object_list %}
         <tr>
           <td>
-            <a href="{% url 'checkout:order_detail' order.pk %}">{{ order.pk }}</a>
+            {{ order.pk }}</a>
           </td>
           <td>
             {% for product in order.products %}
@@ -34,6 +34,9 @@
           </td>
           <td>
             {{ order.created|date:"d/m/Y h:m" }}
+          </td>
+          <td>
+            <a href="{% url 'checkout:order_detail' order.pk %}">Detalhes</a>
           </td>
           <td>
             <a href="{% url 'checkout:printpdf' order.pk %}">Imprimir</a>
