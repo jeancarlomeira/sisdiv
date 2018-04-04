@@ -24,7 +24,7 @@ SECRET_KEY = '9%8w-)t!&2m+=(oh0dxyla1$&uz7hdr)_m*a!usv37^7!bp*2='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jeancarlomeira.pythonanywhere.com','https://code.jquery.com/jquery-1.10.2.min.js', 'https://placehold.it/350x250']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sisdiv.pythonanywhere.com','https://code.jquery.com/jquery-1.10.2.min.js', 'https://placehold.it/350x250']
 
 
 # Application definition
