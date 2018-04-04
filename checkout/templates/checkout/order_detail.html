@@ -1,0 +1,48 @@
+{% extends "accounts/index.html" %}
+
+{% load pagination %}
+
+{% load widget_tweaks %}
+
+{% block title %}Pedido{% endblock %}
+
+{% block accounts_container %}
+
+<h2>Pedido #{{ order.pk }}<a href="{% url 'checkout:printpdf' order.pk %}" class="pull-right btn btn-success">Imprimir</a></h2>
+<dl class="dl-horizontal">
+  <dt>Total R$</dt>
+  <dd>{{ object.total|floatformat:"2" }}</dd>
+  <dt>Situação</dt>
+  <dd>{{ object.get_status_display}}</dd>
+  <dt>Data</dt>
+  <dd>{{ object.created|date:"d/m/Y H:i" }}</dd>
+</dl>
+<table class="table table-bordered">
+  <h3>Itens do Pedido</h3>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quant</th>
+      <th>Unidade</th>
+      <th>Descrição do Material</th>
+      <th>Código</th>
+      <th>Preço Unitário</th>
+      <th>Preço Referencial</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in object.itens.all %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.unid }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.codigo }}</td>
+      <td>R$ {{ item.price|floatformat:"2" }}</td>
+      <td>R$ {{ item.sub|floatformat:"2" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ product }} | {{ block.super }}
+{% endblock %}
+
+{% block container %}
+<div class="page-header">
+  <h1>{{ product }}</h1>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <a href="#" class="thumbnail">
+      <img src="http://placehold.it/350x250" alt="" />
+    </a>
+  </div>
+  <div class="col-sm-8">
+    <dl>
+      {{ product.description|linebreaks }}
+    </dl>
+    <label>Código Comprasnet: </label>
+      {{ product.codigo }}
+    </p>
+    <label>Unidade: </label>
+      {{ product.unid }}
+    </p>
+    <label>Última aquisição: </label>
+      {{ product.pregao }}
+    </p>
+    <label>Preço de referência da última aquisição: </label>
+      R$ {{ product.price }}
+    </p>
+    <p class="text-right">
+      <a href="{% url 'checkout:add_cart' product.slug %}" class="btn btn-success">Adicionar ao Pedido</a>
+  </div>
+</div>
+{% endblock %}

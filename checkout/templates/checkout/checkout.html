@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Finalização do Pedido
+{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+    <h1>Finalização da Compra</h1>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="alert alert-success">
+            Seu pedido de compras foi realizado com sucesso.
+        </div>
+        <p>
+            Você deve imprimir o pedido, assinar e abrir processo encaminhando à Direção do CES.
+        </p>
+
+        <p class="text-right">
+          <a href="{% url 'checkout:order_list' %}" class="btn btn-success">Imprimir</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

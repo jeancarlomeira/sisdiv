@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Página de Impressão</title>
+    <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+
+      .recuo { text-indent:4em }
+    </style>
+  </head>
+
+
+
+  <center>
+    <img  align="top" width="100px" height="100px"
+    src="https://seeklogo.com/images/U/ufcg_universidade_federal_de_campina_grande-logo-E8B3971276-seeklogo.com.png" alt="" />
+    <p>
+    <font size="2" face="Arial">
+      <b>UNIVERSIDADE FEDERAL DE CAMPINA GRANDE</br>
+        CENTRO DE EDUCAÇÃO E SAÚDE – CAMPUS CUITÉ</br>
+        Acesso Professora Maria Anita Furtado Coelho, s/n, Olho d’Água da Bica</br>
+        Tel. 83 3372 1900/1912</br></b>
+        <p>
+        <h1>PEDIDO DE MATERIAL DE CONSUMO</h1>
+  </center>
+  <body>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quant</th>
+          <th>Unidade</th>
+          <th>Descrição do Material</th>
+          <th>Código</th>
+          <th>Preço Unitário</th>
+          <th>Preço Referencial</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in object.itens.all %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.unid }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.codigo }}</td>
+          <td>R$ {{ item.price|floatformat:"2" }}</td>
+          <td>R$ {{ item.sub|floatformat:"2" }}</td>
+        </tr>
+        {% endfor %}
+        <th colspan="6">TOTAL</th>
+        <th>R$ {{ object.total|floatformat:"2" }}</th>
+      </tbody>
+    </table>
+    <p>
+    <div>
+      <p align=justify class="text-info recuo">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div align="right">
+      Cuite, {% now "d/F/Y" %}
+    </div>
+    <p>
+    <p>
+    <p>
+    <div align="center">
+      __________________________________________<br/>
+      <b>{{ user.name }}</b><br/>
+      {{ user.cargo }}</br>
+      Mat.: {{ user.matricula }}
+    </div>
+  </font>
+  </body>
+</html>
