@@ -11,18 +11,18 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Número</th>
-          <th>Produtos</th>
-          <th>Situação</th>
-          <th>Data</th>
-          <th>Ação</th>
+          <th><center>N°</center></th>
+          <th><center>Produtos</center></th>
+          <th><center>Situação</center></th>
+          <th><center>Data</center></th>
+          <th colspan="2"><center>Ações</center></th>
         </tr>
       </thead>
       <tbody>
         {% for order in object_list %}
         <tr>
           <td>
-            {{ order.pk }}</a>
+            <center>{{ order.pk }}</center></a>
           </td>
           <td>
             {% for product in order.products %}
@@ -36,10 +36,10 @@
             {{ order.created|date:"d/m/Y h:m" }}
           </td>
           <td>
-            <a href="{% url 'checkout:order_detail' order.pk %}">Detalhes</a>
+            <a href="{% url 'checkout:order_detail' order.pk %}"><center>Detalhes</center></a>
           </td>
           <td>
-            <a href="{% url 'checkout:printpdf' order.pk %}">Imprimir</a>
+            <a href="{% url 'checkout:printpdf' order.pk %}"><center>Imprimir</center></a>
           </td>
         </tr>
         {% endfor %}
