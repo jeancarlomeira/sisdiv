@@ -10,6 +10,7 @@ def cart_item_middleware(get_response):
 		response = get_response(request)
 		#depois do response
 		if session_key != request.session.session_key:
+			request.session.save()
 			CartItem.objects.filter(cart_key = session_key).update(cart_key = request.session.session_key)
 		else:
 			CartItem.objects.filter(cart_key = session_key)
