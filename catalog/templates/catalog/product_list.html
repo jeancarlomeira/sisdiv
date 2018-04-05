@@ -14,15 +14,12 @@
   {% for product in product_list %}
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <a href="{{ product.get_absolute_url }}">
-        <img src="http://placehold.it/350x250" alt="" />
-      </a>
       <div class="caption">
         <h3>{{ product.codigo }} - {{ product }}</h3>
           {{ product.description|linebreaks }}
         <p>
         <label>Unidade: </label>
-          {{ product.unid }}
+          <font color="#0000FF"> <b>{{ product.unid }}</b> </font>
         </p>
         <label>Última aquisição: </label>
           {{ product.pregao }}

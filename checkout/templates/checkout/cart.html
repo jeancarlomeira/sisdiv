@@ -18,7 +18,7 @@ Relação de Materiais
             <table class="table table-bordered">
                 <thead>
                     <th>
-                        ID
+                        Item
                     </th>
                     <th>
                         Nome
@@ -29,7 +29,7 @@ Relação de Materiais
                     <th>
                         Preço
                     </th>
-                    <th style="width: 10%;">
+                    <th class="text-center" style="width: 10%;">
                         Quantidade
                     </th>
                     <th>
@@ -40,7 +40,7 @@ Relação de Materiais
                     {% for form in formset %}
                         <tr>
                             <td>
-                                {{ form.instance.product.pk }}
+                                {{ forloop.counter }}
                             </td>
                             <td>
                                 {{ form.instance.product }}
@@ -51,7 +51,7 @@ Relação de Materiais
                             <td>
                                 R$ {{ form.instance.price|floatformat:"2" }}
                             </td>
-                            <td class="form-control">
+                            <td>
                                 {% render_field form.quantity class="form-control" %}
                             </td>
                             <td>

@@ -9,11 +9,6 @@
   <h1>{{ product }}</h1>
 </div>
 <div class="row">
-  <div class="col-sm-4">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/350x250" alt="" />
-    </a>
-  </div>
   <div class="col-sm-8">
     <dl>
       {{ product.description|linebreaks }}
@@ -22,7 +17,7 @@
       {{ product.codigo }}
     </p>
     <label>Unidade: </label>
-      {{ product.unid }}
+      <font color="#0000FF"> <b>{{ product.unid }}</b> </font>
     </p>
     <label>Última aquisição: </label>
       {{ product.pregao }}
