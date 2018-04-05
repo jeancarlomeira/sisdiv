@@ -6,8 +6,10 @@ from django.views.generic import TemplateView, ListView
 from .forms import SearchForm
 from catalog.models import Product
 from .models import Search
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
-class ResultsView(ListView):
+class ResultsView(LoginRequiredMixin,ListView):
     template_name = 'catalog/product_list.html'
     context_object_name = 'product_list'
     paginate_by = 2

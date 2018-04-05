@@ -24,8 +24,11 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
+
+
+				{% if user.is_authenticated  %}
+				<div class="navbar-collapse collapse" id="navbar-main">
+					<ul class="nav navbar-nav">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list' %}" id="download">Material de Consumo <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
@@ -34,24 +37,29 @@
 								{% endfor %}
               </ul>
             </li>
-			<li>
-				<a href="{% url 'contact' %}">Contato</a>
-			</li>
-			<li>
-				<a href="{% url 'searchengine:search' %}">Pesquisar</a>
-			</li>
+						<li>
+							<a href="{% url 'contact' %}">Contato</a>
+						</li>
+						<li>
+							<a href="{% url 'searchengine:search' %}">Pesquisar</a>
+						</li>
           </ul>
-
           <ul class="nav navbar-nav navbar-right">
-						{% if user.is_authenticated  %}
 						<li><a href="{% url 'checkout:cart_item' %}">Pedido Atual</a></li>
 						<li><a href="{% url 'accounts:index' %}">Minha Conta</a></li>
 						<li><a href="{% url 'logout' %}">Sair</a></li>
-						{% else %}
+					</ul>
+				{% else %}
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="{% url 'contact' %}">Contato</a>
+					</li>
+				</ul>
+					<ul class="nav navbar-nav navbar-right">
 						<li><a href="{% url 'login' %}">Entrar</a></li>
 						<li><a href="{% url 'accounts:register' %}">Cadastrar</a></li>
-						{% endif %}
-          </ul>
+					</ul>
+				{% endif %}
         </div>
       </div>
     </div>
@@ -66,19 +74,42 @@
 
       {% block container %}{% endblock %}
 		</div>
+
+
+
+		{% if user.is_authenticated  %}
+		<div>
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="list-unstyled">
+							<li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
+							<li><a href="{% url 'index' %}">Início</a></li>
+							<li><a href="{% url 'catalog:product_list' %}">Material de Consumo</a></li>
+							<li><a href="{% url 'contact' %}">Contato</a></li>
+							<li><a href="#">Legislação</a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+	{% else %}
+	<div>
 		<footer>
 			<div class="row">
-			  <div class="col-lg-12">
-			    <ul class="list-unstyled">
-			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
-			      <li><a href="{% url 'index' %}">Início</a></li>
-			      <li><a href="{% url 'catalog:product_list' %}">Material de Consumo</a></li>
-			      <li><a href="{% url 'contact' %}">Contato</a></li>
-			      <li><a href="#">Legislação</a></li>
-			    </ul>
-			  </div>
+				<div class="col-lg-12">
+					<ul class="list-unstyled">
+						<li><a href="{% url 'contact' %}">Contato</a></li>
+						<li><a href="#">Legislação</a></li>
+					</ul>
+				</div>
 			</div>
 		</footer>
+	</div>
+	{% endif %}
+
+
+
 	</div>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>

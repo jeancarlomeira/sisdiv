@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views import generic
+from django.views.generic import ListView
 from .models import Product, Category
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
-class ProductListView(generic.ListView):
+
+class ProductListView(LoginRequiredMixin,ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'product_list'
@@ -10,7 +13,7 @@ class ProductListView(generic.ListView):
 
 product_list = ProductListView.as_view()
 
-class CategoryListView(generic.ListView):
+class CategoryListView(LoginRequiredMixin,ListView):
     template_name = 'catalog/category.html'
     context_object_name = 'product_list'
     paginate_by = 2

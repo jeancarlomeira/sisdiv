@@ -11,7 +11,7 @@ from catalog.models import Product, Unidades
 from .models import CartItem,Order
 from django.http import HttpResponse
 
-class CreateCartItemView(RedirectView):
+class CreateCartItemView(LoginRequiredMixin,RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         product = get_object_or_404(Product, slug=self.kwargs['slug'])
         if self.request.session.session_key is None:
