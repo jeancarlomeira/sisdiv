@@ -8,7 +8,7 @@ Relação de Materiais
 
 {% block container %}
 <div class="page-header">
-    <h1>Relação de Materiais do Pedido</h1>
+    <h1 class="text-center">Relação de Materiais do Pedido</h1>
 </div>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -17,23 +17,26 @@ Relação de Materiais
             {{ formset.management_form }}
             <table class="table table-bordered">
                 <thead>
-                    <th>
+                    <th width="50">
                         Item
                     </th>
                     <th>
-                        Nome
+                        Descrição
                     </th>
                     <th>
                         Unidade
                     </th>
-                    <th>
+                    <th width="100">
                         Preço
                     </th>
                     <th class="text-center" style="width: 10%;">
                         Quantidade
                     </th>
-                    <th>
+                    <th width="100">
                       Subtotal
+                    </th>
+                    <th>
+                      Ação
                     </th>
                 </thead>
                 <tbody>

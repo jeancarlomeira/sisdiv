@@ -7,27 +7,16 @@
 {% endblock %}
 
 {% block container %}
-<div class="">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="page-header">
-            <h1>Pesquisar</h1>
+<div class="page-header">
+  <h1>Pesquisar</h1>
+    <div>
+      <form method="POST" class="post-form">
+        <div class="fieldWrapper">
+        {% csrf_token %}
+        {{ form.as_p }}
         </div>
-        <div>
-          <form method="POST" class="post-form">
-            <div class="fieldWrapper">
-            {% csrf_token %}
-            {{ form.as_p }}
-            </div> 
-            <button type="submit" class="save btn btn-default">Pesquisar</button>
-          </form>
-      </div>
+        <button type="submit" class="save btn btn-default">Pesquisar</button>
+      </form>
     </div>
 </div>
 {% endblock %}
-
-
-<div class="fieldWrapper">
-        {{ form.subject.errors }}
-        <label for="id_subject">Email subject:</label>
-        {{ form.subject }}
-    </div>

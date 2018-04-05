@@ -35,10 +35,10 @@
           <td>
             {{ order.created|date:"d/m/Y h:m" }}
           </td>
-          <td>
+          <td class="text-center">
             <a href="{% url 'checkout:order_detail' order.pk %}"class="btn btn-default" role="button"><center>Detalhes</center></a>
           </td>
-          <td>
+          <td class="text-center">
             <a href="{% url 'checkout:printpdf' order.pk %}" class="btn btn-success" role="button"><center>Imprimir</center></a>
           </td>
         </tr>
