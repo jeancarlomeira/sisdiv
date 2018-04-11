@@ -49,7 +49,7 @@ class UpdatePasswordView(LoginRequiredMixin,FormView):
 
 password_change = UpdatePasswordView.as_view()
 
-class UsersListView(LoginRequiredMixin,ListView):
+class UsersListView(ListView):
     model = User
     template_name = 'accounts/userlist.html'
     context_object_name = 'users'

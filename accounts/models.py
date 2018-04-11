@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager, Permission
 
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
-        'E-mail', max_length=30, unique=True, validators=[
+        'Apelido / Usuário', max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
                 'Informe um nome de usuário válido.'
@@ -16,7 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     name = models.CharField('Nome', max_length=100)
     email = models.EmailField('E-mail', unique=True)
-    matricula = models.CharField('Matrícula', max_length=8)
+    matricula = models.CharField('Matrícula', max_length=6)
     cargo = models.CharField('Cargo', max_length=100)
     is_staff = models.BooleanField('Equipe', default=False)
     is_active = models.BooleanField('Ativo', default=True)

@@ -26,7 +26,9 @@
       R$ {{ product.price }}
     </p>
     <p class="text-right">
-      <a href="{% url 'checkout:add_cart' product.slug %}" class="btn btn-success">Adicionar ao Pedido</a>
+      <a href="{% url 'checkout:add_cart' product.slug %}" class="btn btn-success">Adicionar ao Pedido</a>     
+
+    </p>
   </div>
 </div>
 {% endblock %}

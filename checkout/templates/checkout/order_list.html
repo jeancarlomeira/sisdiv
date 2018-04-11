@@ -13,7 +13,6 @@
         <tr>
           <th><center>N°</center></th>
           <th><center>Produtos</center></th>
-          <th><center>Situação</center></th>
           <th><center>Data</center></th>
           <th colspan="2"><center>Ações</center></th>
         </tr>
@@ -28,9 +27,6 @@
             {% for product in order.products %}
             - {{ product.name }}{% if not forloop.last %}<br />{% endif %}
             {% endfor %}
-          </td>
-          <td>
-            {{ order.get_status_display }}
           </td>
           <td>
             {{ order.created|date:"d/m/Y h:m" }}

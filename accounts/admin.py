@@ -11,8 +11,8 @@ class UserAdmin(BaseUserAdmin):
     )
     form = UserAdminForm
     fieldsets = (
-        (None, {'fields': ('username', 'email', 'name', 'cargo', 'matricula')}),
-        ('Informações Básicas', {'fields': ('last_login',)}),
+        (None, {'fields': ('username', 'email')}),
+        ('Informações Básicas', {'fields': ('name', 'last_login')}),
         ('Permissões', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')})
     )
     list_display = ['username', 'name', 'email', 'is_active', 'is_staff', 'date_joined']

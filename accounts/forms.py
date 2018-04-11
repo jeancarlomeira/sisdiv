@@ -7,11 +7,9 @@ from .models import User
 class UserAdminCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['name', 'email', 'matricula', 'cargo']
+        fields = ['username', 'email', 'matricula', 'cargo']
 
 class UserAdminForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'email', 'matricula', 'is_active', 'is_staff']
-
-#'username'
+        fields = ['username', 'email', 'name', 'matricula', 'is_active', 'is_staff']

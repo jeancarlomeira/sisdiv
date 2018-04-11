@@ -10,32 +10,32 @@
 <div class="page-header">
   <h1>Produtos</h1>
 </div>
-<div class="row">
-  {% for product in product_list %}
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>{{ product.codigo }} - {{ product }}</h3>
-          {{ product.description|linebreaks }}
-        <p>
-        <label>Unidade: </label>
-          <font color="#0000FF"> <b>{{ product.unid }}</b> </font>
-        </p>
-        <label>Última aquisição: </label>
-          {{ product.pregao }}
-        </p>
-        <label>Preço de referência da última aquisição: </label>
-          R$ {{ product.price }}
-        </p>
-        <p>
-          <a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a>
-          <a href="{% url 'checkout:add_cart' product.slug %}" class="btn btn-default" role="button">Adicionar ao Pedido</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="70">Código</th>
+      <th width="200">Descrição</th>
+      <th width="100">Unidade</th>
+      <th class="text-center" colspan="2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in product_list %}
+    <tr>
+      <td>{{ product.codigo }}</td>
+      <td>{{ product }}</td>
+      <td><font color="#0000FF"> <b>{{ product.unid }}</b> </font></td>
+      <td class="text-center"  width="80">
+      <a href="{{ product.get_absolute_url }}" class="btn btn-default" role="button">Detalhes</a>
+      </td>
+      <td class="text-center"  width="100">
+        <a href="{% url 'checkout:add_cart' product.slug %}" class="btn btn-success" role="button">Adicionar ao Pedido</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% pagination request paginator page_obj %}
 {% endblock %}

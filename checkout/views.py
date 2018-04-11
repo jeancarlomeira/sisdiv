@@ -63,6 +63,9 @@ class CartItemView(LoginRequiredMixin,TemplateView):
             context['formset'] = self.get_formset(clear=True)
         return self.render_to_response(context)
 
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
 cart_item = CartItemView.as_view()
 
 class CheckoutView(LoginRequiredMixin,TemplateView):
