@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Requisição de Material{% endblock %}
+
+{% block container %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+          <a href="{% url 'checkout:cart_item' %}" class="list-group-item">Requisição Atual</a>
+          <a href="{% url 'catalog:product_list' %}" class="list-group-item">Consultar Estoque</a>
+          <a href="#" class="list-group-item">Categorias</a>
+          <a href="{% url 'checkout:order_list' %}" class="list-group-item">Pesquisar</a>
+        </div>
+    </div>
+    <div class="col-md-9">
+      {% block catalog_container %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,48 +1,76 @@
-{% extends "base.html" %}
-
 {% load widget_tweaks %}
 
-{% block title %}Login | {{ block.super }}{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistema de Almoxarifado - CES/UFCG</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
 
-{% block container %}
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="page-header">
-            <h1>Login</h1>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand"><b>Sistema de Almoxarifado CES/UFCG<b></a>
         </div>
-        <form class="form-horizontal" method="post">
-            {% csrf_token %}
-            {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ error }}
-            </div>
-            {% endfor %}
-            <fieldset>
-                <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-                  <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label }}</label>
-                  <div class="col-md-9">
-                    {% render_field form.username class="form-control" %}
-                    {% for error in form.username.errors %}
-                    <span class="help-block">{{ error }}</span>
-                    {% endfor %}
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <div class="page-header">
+                  <h1>Login</h1>
+              </div>
+              <form class="form-horizontal" method="post">
+                  {% csrf_token %}
+                  {% for error in form.non_field_errors %}
+                  <div class="alert alert-danger">
+                      {{ error }}
                   </div>
-                </div>
-                <div class="form-group{% if form.password.errors %} has-error{% endif %}">
-                  <label for="{{ form.password.auto_id }}" class="col-md-3 control-label">{{ form.password.label }}</label>
-                  <div class="col-md-9">
-                    {% render_field form.password class="form-control" %}
-                    {% for error in form.password.errors %}
-                    <span class="help-block">{{ error }}</span>
-                    {% endfor %}
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-9 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                  </div>
-                </div>
-            </fieldset>
-        </form>
+                  {% endfor %}
+                  <fieldset>
+                      <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+                        <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label }}</label>
+                        <div class="col-md-9">
+                          {% render_field form.username class="form-control" %}
+                          {% for error in form.username.errors %}
+                          <span class="help-block">{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+                        <label for="{{ form.password.auto_id }}" class="col-md-3 control-label">{{ form.password.label }}</label>
+                        <div class="col-md-9">
+                          {% render_field form.password class="form-control" %}
+                          {% for error in form.password.errors %}
+                          <span class="help-block">{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                          <p><button type="submit" class="btn btn-primary">Entrar</button></P>
+                          <p><a href="#"data-toggle="popover" data-content="Favor entrar em contato: almoxarifado.ces@ufcg.edu.br Telefone: (83) 3372 1912">Esqueceu a senha?</a></p>
+                          <p><a href="{% url 'accounts:register' %}">Criar Perfil</a></p>
+                        </div>
+                      </div>
+                  </fieldset>
+              </form>
+          </div>
+      </div>
     </div>
-</div>
-{% endblock %}
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+    </script>
+
+  </body>
+</html>

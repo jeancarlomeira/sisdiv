@@ -6,25 +6,21 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-from .forms import ContactForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 User = get_user_model()
 
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
 
 index = IndexView.as_view()
 
-def contact(request):
-    success = False
-    form = ContactForm(request.POST or None)
-    if form.is_valid():
-        form.send_mail()
-        success = True
-    elif request.method == 'POST':
-        messages.error(request, 'Formulário inválido')
-    context = {
-        'form': form,
-        'success': success
-    }
-    return render(request, 'contact.html', context)
+class ContactView(LoginRequiredMixin, TemplateView):
+    template_name = 'contact.html'
+
+contact = ContactView.as_view()
+
+class LawsView(LoginRequiredMixin, TemplateView):
+    template_name = 'laws.html'
+
+laws = LawsView.as_view()

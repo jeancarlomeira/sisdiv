@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from .models import Product, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -35,7 +35,10 @@ def product(request, slug):
     }
     return render(request, 'catalog/product.html', context)
 
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = 'catalog/index.html'
 
+index = IndexView.as_view()
 
 
 
